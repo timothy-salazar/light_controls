@@ -11,4 +11,4 @@ Watts = 5A x 12V
 That's less than optimal - even for one LED strip - and that was reflected in the product reviews. But at $20 for 10 meters, the price was definitely right, so I purchased a separate 12V 10A power supply.
 ![alt-text](../master/images/light_control_setup.jpg "Components for Light Control Project")
 
-<img src="https://github.com/timothy-salazar/light_controls/images/light_control_setup.jpg">
+<img src="https://github.com/timothy-salazar/light_controls/blob/master/images/light_control_setup.jpg">
