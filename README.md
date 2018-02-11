@@ -38,10 +38,19 @@ I assigned the blue LED to GPIO 26, so if at this point we wanted to check that 
 ```
 pigs p 26 255
 ```
+Note that PWM operates on a scale of 0-255, so the line above is telling our Raspberry Pi to power the blue LEDs with a 100% duty cycle. By using values between 0 and 255, we can provide more or less power to each color.
 
 <img src="images/ceiling_blue_off.jpg" width=400><img src="images/ceiling_blue_on.jpg" width=400>
 
+Within Python code, it would look something like this:
 
+```python
+import pigpio
+
+pi1 = pigpio.pi() # pi1 accesses local GPIO
+pi1.set_mode(26,pigpio.OUTPUT) # sets this GPIO pin as output
+pi1.set_PWM_dutycycle(26,255) # set pin 26 to 100% duty cycle
+```
 
 ## Works Cited
 
