@@ -54,6 +54,7 @@ pi1.set_PWM_dutycycle(26,255) # set pin 26 to 100% duty cycle
 Once we have those basics down, the rest is pretty straightforward. [Here's a jupyter notebook with some sample code to play around with](../master/src/sample_pigpio.ipynb)
 
 ## Making A Flask App
+In the 
 ![alt-text](../master/images/light_control_webpage.png "Light Control Webpage")
 
 
