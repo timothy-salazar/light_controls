@@ -52,6 +52,7 @@ pi1.set_mode(26,pigpio.OUTPUT)  # sets this GPIO pin as output. Not necessary, b
                                 # used in the documentation, seems like best practices
 pi1.set_PWM_dutycycle(26,255) # set pin 26 to 100% duty cycle
 ```
+Once we have those basics down, the rest is pretty straightforward. [Here's a jupyter notebook with some sample code to play around with](../master/src/sample_pigpio.ipynb)
 
 
 ## Works Cited
