@@ -54,7 +54,13 @@ pi1.set_PWM_dutycycle(26,255) # set pin 26 to 100% duty cycle
 Once we have those basics down, the rest is pretty straightforward. [Here's a jupyter notebook with some sample code to play around with](../master/src/sample_pigpio.ipynb)
 
 ## Making A Flask App
-In the 
+In the sample repository there was a program that asked the user to enter three values between 0 and 255 for the red, green, and blue color values. In practice this would be time consuming and unintuitive. While I was testing the LEDs I quickly realized how hard it is to guess the proportions required to achieve a particular color! It's also cumbersome to access the Pi's command line whenever you want to change the lights. You can use SSH to access your Pi easily enough, and then pull up the program to change the lights, but it takes time and can easily ruin the mood of a tabletop RPG session.
+
+The solution is to set up a web app - so you can interact with the LEDs through an attractive, intuitive GUI. 
+
+
+
+
 <p align="center">
   <img src="images/light_control_webpage.png" alt="Light Control Webpage" width=550>
 </p>
