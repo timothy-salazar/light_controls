@@ -56,9 +56,8 @@ Once we have those basics down, the rest is pretty straightforward. [Here's a ju
 ## Making A Flask App
 In the 
 
-<img src="images/light_control_webpage.png" alt="Light Control Webpage" width=400, align="middle">
+<img align="middle" src="images/light_control_webpage.png" alt="Light Control Webpage" width=700>
 
-![alt-text](../master/images/light_control_webpage.png "Light Control Webpage")
 
 
 
