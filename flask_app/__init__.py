@@ -1,1 +1,1 @@
-from .gameroom_control import app
+from .light_controls import app
