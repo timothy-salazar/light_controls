@@ -27,7 +27,6 @@ The obvious choice is to use MOSFETs. Each MOSFET has a gate, source, and drain 
 The LED strip is attached to the 12V power supply, and the red, green, and blue wires - which correspond to the red, green, and blue ground connections - are each attached to the source pin of a MOSFET. Then the GPIO we have designated to control each color is attached to the respective gate pin, and the drain pins are then connected to ground. Now we have the hardware in place to control the flow of current from our power supply, through the LED strips, and down to ground for each color.
 
 ## Controlling GPIO with Raspberry Pi
-![alt-text](../master/images/light_control_webpage.png "Light Control Webpage")
 I chose to use the [Pigpio library for the Raspberry Pi](http://abyz.me.uk/rpi/pigpio/). This gives us the tools to control whether a pin is on or off, as well as PWM (pulse width modulation), which lets us control the 'amount' of red, green, and blue. It also has the pigpiod daemon, which lets us check that everything is working before we go any further. The daeomon can be started with:
 ```
 sudo pigpiod
@@ -53,6 +52,11 @@ pi1.set_mode(26,pigpio.OUTPUT)  # sets this GPIO pin as output. Not necessary, b
 pi1.set_PWM_dutycycle(26,255) # set pin 26 to 100% duty cycle
 ```
 Once we have those basics down, the rest is pretty straightforward. [Here's a jupyter notebook with some sample code to play around with](../master/src/sample_pigpio.ipynb)
+
+## Making A Flask App
+![alt-text](../master/images/light_control_webpage.png "Light Control Webpage")
+
+
 
 
 ## Works Cited
