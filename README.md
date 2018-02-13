@@ -48,7 +48,8 @@ Within Python code, it would look something like this:
 import pigpio
 
 pi1 = pigpio.pi() # pi1 accesses local GPIO
-pi1.set_mode(26,pigpio.OUTPUT) # sets this GPIO pin as output
+pi1.set_mode(26,pigpio.OUTPUT)  # sets this GPIO pin as output. Not necessary, but 
+                                # used in the documentation, seems like best practices
 pi1.set_PWM_dutycycle(26,255) # set pin 26 to 100% duty cycle
 ```
 
