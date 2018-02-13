@@ -8,7 +8,7 @@ from light_controls.transmitRF import transmit_outlet
 app = Flask(__name__) # create the application instance :)
 app.config.from_object(__name__) # load config from this file , flaskr.py
 
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+app.config.from_envvar('LIGHT_CONTROLS_SETTINGS', silent=True)
 pi1 = pigpio.pi()
 
 @app.route('/outlet',methods=['POST'])
