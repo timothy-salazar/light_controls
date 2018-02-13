@@ -3,7 +3,7 @@ render_template, flash
 import RPi.GPIO as GPIO
 import pigpio
 import numpy as np
-from light_control.transmitRF import transmit_outlet
+from light_controls.transmitRF import transmit_outlet
 
 app = Flask(__name__) # create the application instance :)
 app.config.from_object(__name__) # load config from this file , flaskr.py
