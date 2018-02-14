@@ -26,7 +26,8 @@ import pigpio
 import numpy as np
 from light_controls.transmitRF import transmit_outlet
 
-# This is all boilerplate 
+# This is all boilerplate. We're creating the application instance and setting up
+# the configuration. Don't worry if you don't understand this part.
 app = Flask(__name__) # create the application instance :)
 app.config.from_object(__name__) 
 app.config.from_envvar('LIGHT_CONTROLS_SETTINGS', silent=True) # have the name of your app here, if different
