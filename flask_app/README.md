@@ -7,7 +7,7 @@ I'm about to go through the process of making a Flask app in just a page or so. 
 ### File Structure
 
 <p align="center">
-  <img src="images/file_structure.png" alt="Screenshot of Directories">
+  <img src="../images/file_structure.png" alt="Screenshot of Directories">
 </p>
 
 First some bookkeeping. If we want to make a Flask application, we're going to want a particular file structure. The application here is called 'light_controls,' so we have a directory called 'light_controls' which contains two subdirectories called 'templates' and 'static.' Templates contains the html templates for the webpages we're going to be displaying, and static will contain the 'Cascading Style Sheet' or CSS. I'll go into what that means in more detail later. The MANIFEST.in, setup.py, and __init__.py files are there so that we can install 'light_controls' as a package. I'll also go more in depth on these later.
