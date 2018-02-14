@@ -12,7 +12,7 @@ I'm about to go through the process of making a Flask app in just a page or so. 
 
 First some bookkeeping. If we want to make a Flask application, we're going to want a particular file structure. The application here is called 'light_controls,' so we have a directory called 'light_controls' which contains two subdirectories called 'templates' and 'static.' Templates contains the html templates for the webpages we're going to be displaying, and static will contain the 'Cascading Style Sheet' or CSS. I'll go into what that means in more detail later. The MANIFEST.in, setup.py, and __init__.py files are there so that we can install 'light_controls' as a package. I'll also go more in depth on these later.
 
-### light_control.py
+### light_controls.py
 
 I've copied the entire python code for this down below. It's only about 30 lines long, and it could have been shorter if I wasn't focusing on readability. 
 
@@ -76,7 +76,7 @@ This is a VERY basic web app. It's going to have one page, with the option to ad
 Oh boy. HTML isn't my strongest suit, but I'll try to explain the important parts. 
 First of all:
 
-[Here is a link to w3schools](https://www.w3schools.com/html/default.asp) excellent HTML tuturials. They do a much better job of explaining what's going on than I will. An absolute lifesaver.
+[Here is a link to w3schools'](https://www.w3schools.com/html/default.asp) excellent HTML tuturials. They do a much better job of explaining what's going on than I will. An absolute lifesaver.
 
 [A link to the 'Flaskr' app](http://flask.pocoo.org/docs/0.12/tutorial/introduction/) which is a simple twitter clone implimented in Flask. I consulted this a LOT as I was working my way through the basics of FLASK and HTML. 
 
