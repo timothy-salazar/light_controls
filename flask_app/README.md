@@ -19,6 +19,7 @@ I've copied the entire python code for this down below. It's only about 30 lines
 So what's going on here? 
 
 '''python
+
 from flask import Flask, request, session, g, url_for, \
 render_template, flash
 import pigpio
@@ -36,9 +37,9 @@ green_pin = 13    # replace with yours if different.
 blue_pin = 26
 
 @app.route('/', methods=['GET','POST']) # '/' is going to appear at the end of the url - so this is our
-                                        # default landing page. 'GET' means we're letting it retrieve and 
-                                        # display the page, 'POST' means we're letting the page update
-                                        # information - i.e., the user tells us what color they want
+                                        #default landing page. 'GET' means we're letting it retrieve and 
+                                        #display the page, 'POST' means we're letting the page update
+                                        #information - i.e., the user tells us what color they want
 def light_controls():
     if request.method == 'POST':  # this only executes if we're 'POST'ing something. This is the case
                                   # the user submits the form in our html document (chooses a color and
