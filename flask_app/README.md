@@ -18,20 +18,22 @@ I've copied the entire python code for this down below. It's only about 30 lines
 
 So what's going on here? 
 
-First we import the necessary modules. We need flask for obvious reasons. [Pigpio](http://abyz.me.uk/rpi/pigpio/index.html) is the module we're going to use to control the GPIO pins (you could also use RPi.GPIO). Numpy just makes everything in Python easier - import it into almost every Python script I write. 
+> First we import the necessary modules. We need flask for obvious reasons. [Pigpio](http://abyz.me.uk/rpi/pigpio/index.html) is the module we're going to use to control the GPIO pins (you could also use RPi.GPIO). Numpy just makes everything in Python easier - import it into almost every Python script I write. 
 ```python
 from flask import Flask, request, session, g, url_for, \
 render_template, flash
 import pigpio
 import numpy as np
 ```
-This is all boilerplate. We're creating the application instance and setting up the configuration. You don't need to understand what's going 
+> This is all boilerplate. We're creating the application instance and setting up the configuration. If you'd like to dig more into what's going on, you can find a more in depth explanation [here](http://flask.pocoo.org/docs/0.12/quickstart/)
 ```python
 app = Flask(__name__) 
 app.config.from_object(__name__) 
 app.config.from_envvar('LIGHT_CONTROLS_SETTINGS', silent=True) # have the name of your app here, if different
-
-pi1 = pigpio.pi() # This gives us access to the local GPIO
+```
+https://raspberrypi.stackexchange.com/questions/12966/what-is-the-difference-between-board-and-bcm-for-gpio-pin-numbering
+```python
+pi1 = pigpio.pi() # This gives us access to the local GPIO pins
 red_pin = 5       # <- the GPIO pins we're using. 
 green_pin = 13    # replace with yours if different.
 blue_pin = 26
@@ -46,7 +48,7 @@ def light_controls():
                                   # hits 'submit'). Otherwise it skips to the end.
         
         # This try/except clause shouldn't be necessary. I built it in while I was piecing this web
-        # app together - using a manual, 'type in three numbers' mode of color entry. I decided to leave
+        # app together using a manual, 'type in three numbers' mode of color entry. I decided to leave
         # it in, in case you're tinkering as well.
         try:
             # This is using the 'request' function from Flask to retrieve the values the user
