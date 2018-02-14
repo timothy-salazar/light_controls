@@ -31,32 +31,29 @@ app = Flask(__name__)
 app.config.from_object(__name__) 
 app.config.from_envvar('LIGHT_CONTROLS_SETTINGS', silent=True) # have the name of your app here, if different
 ```
-https://raspberrypi.stackexchange.com/questions/12966/what-is-the-difference-between-board-and-bcm-for-gpio-pin-numbering
+> First we use the pigpio module to make an object that will give us access to our Pi's GPIO pins. Pigpio uses the Broadcom (BCM) numbering for GPIO pins. If you're not sure what the difference is, there's a very useful thread that outlines the difference [here](https://raspberrypi.stackexchange.com/questions/12966/what-is-the-difference-between-board-and-bcm-for-gpio-pin-numbering).
 ```python
 pi1 = pigpio.pi() # This gives us access to the local GPIO pins
 red_pin = 5       # <- the GPIO pins we're using. 
 green_pin = 13    # replace with yours if different.
 blue_pin = 26
-
-@app.route('/', methods=['GET','POST']) # '/' is going to appear at the end of the url - so this is our
-                                        # default landing page. 'GET' means we're letting it retrieve and 
-                                        # display the page, 'POST' means we're letting the page update
-                                        # information - i.e., the user tells us what color they want
+```
+> What's going on here? Don't be scared by the '@app.route('/', methods=['GET','POST'])' - it looks scary, but it's just [a decorator](http://book.pythontips.com/en/latest/decorators.html). All we're doing is writing a function that gets called under certain circumstances. The first part - '/' - is going to appear at the end of the url. We put a backslash there because this is our default landing page. 'GET' means we're letting it retrieve and display the page, 'POST' means we're letting the page update information - i.e., the user tells us what color they want
+```python
+@app.route('/', methods=['GET','POST']) 
+```
+> Once we're in the function we see this if statement. All we're doing is checking what kind of request we're receiving. If it's a GET request, we skip the next chunk and just display the page. If it's a POST request, the user wants to change the color of the LEDs, so our program has to do some work!
+```python
 def light_controls():
-    if request.method == 'POST':  # this only executes if we're 'POST'ing something. This is the case
-                                  # the user submits the form in our html document (chooses a color and
-                                  # hits 'submit'). Otherwise it skips to the end.
-        
-        # This try/except clause shouldn't be necessary. I built it in while I was piecing this web
-        # app together using a manual, 'type in three numbers' mode of color entry. I decided to leave
-        # it in, in case you're tinkering as well.
+    if request.method == 'POST':
+```
+> This try/except clause shouldn't be necessary. I built it in while I was piecing this web app together using a manual, 'type in three numbers' mode of color entry. I decided to leave it in, in case you're tinkering as well.
+> If the function has received a POST request, the user wants to change the color of the lights. The chunk within the try clause uses the 'request' function from Flask to retrieve the values the user selected. Once we have the values, we make sure they're the right type and check to see that they fall into the acceptable range (0-255). 
+> If everything checks out, the GPIO pins are told to take on the PWM values the user submitted using the [set_PWM_dutycycle()](http://abyz.me.uk/rpi/pigpio/python.html#set_PWM_dutycycle) function.
+```python
         try:
-            # This is using the 'request' function from Flask to retrieve the values the user
-            # selected. We then make sure they're the right type, check to see that they fall into the 
-            # acceptable range (0-255), and - if everything checks out - the GPIO pins are told to 
-            # take on the PWM values the user submitted. 
             new_colors = np.array([request.form['red'],request.form['green'],request.form['blue']])
-            new_colors = new_colors.astype('int') # make the values all ints
+            new_colors = new_colors.astype('int') # make the values all integers
             assert (np.all(new_colors<256) and np.all(new_colors>=0)) # Are all the values 0-255?
             pi1.set_PWM_dutycycle(red_pin,new_colors[0])  # set new PWM dutycycles
             pi1.set_PWM_dutycycle(green_pin,new_colors[1])
