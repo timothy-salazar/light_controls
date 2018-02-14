@@ -38,13 +38,13 @@ red_pin = 5       # <- the GPIO pins we're using.
 green_pin = 13    # replace with yours if different.
 blue_pin = 26
 ```
-> What's going on here? Don't be scared by the '@app.route('/', methods=['GET','POST'])' - it looks scary, but it's just [a decorator](http://book.pythontips.com/en/latest/decorators.html). All we're doing is writing a function that gets called under certain circumstances. The first part - '/' - is going to appear at the end of the url. We put a backslash there because this is our default landing page. 'GET' means we're letting it retrieve and display the page, 'POST' means we're letting the page update information - i.e., the user tells us what color they want
+> What's going on here? Don't be scared by the '@app.route()' piece - it looks scary, but it's just [a decorator](http://book.pythontips.com/en/latest/decorators.html). All we're doing is writing a function that gets called under certain circumstances. The first part - '/' - is going to appear at the end of the url. We put a backslash there because this is our default landing page. 'GET' means we're letting it retrieve and display the page, 'POST' means we're letting the page update information - i.e., the user tells us what color they want
 ```python
 @app.route('/', methods=['GET','POST']) 
+def light_controls():
 ```
 > Once we're in the function we see this if statement. All we're doing is checking what kind of request we're receiving. If it's a GET request, we skip the next chunk and just display the page. If it's a POST request, the user wants to change the color of the LEDs, so our program has to do some work!
 ```python
-def light_controls():
     if request.method == 'POST':
 ```
 > This try/except clause shouldn't be necessary. I built it in while I was piecing this web app together using a manual, 'type in three numbers' mode of color entry. I decided to leave it in, in case you're tinkering as well.
