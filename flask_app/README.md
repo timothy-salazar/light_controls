@@ -18,16 +18,15 @@ I've copied the entire python code for this down below. It's only about 30 lines
 
 So what's going on here? 
 
+First we import the necessary modules. We need flask for obvious reasons. [Pigpio](http://abyz.me.uk/rpi/pigpio/index.html) is the module we're going to use to control the GPIO pins (you could also use RPi.GPIO). Numpy just makes everything in Python easier - import it into almost every Python script I write. 
 ```python
-
 from flask import Flask, request, session, g, url_for, \
 render_template, flash
 import pigpio
 import numpy as np
-from light_controls.transmitRF import transmit_outlet
-
-# This is all boilerplate. We're creating the application instance and setting up
-# the configuration. Don't worry if you don't understand this part.
+```
+This is all boilerplate. We're creating the application instance and setting up the configuration. You don't need to understand what's going 
+```python
 app = Flask(__name__) 
 app.config.from_object(__name__) 
 app.config.from_envvar('LIGHT_CONTROLS_SETTINGS', silent=True) # have the name of your app here, if different
