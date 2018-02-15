@@ -57,7 +57,7 @@ Once we have those basics down, the rest is pretty straightforward. [Here's a ju
 
 I owned a few RF controlled outlets, and I was interested in seeing if I could control them through my Pi. My roommate had a few neon lights, and being able to turn them on and off through the same interface as the LED strips was an attractive prospect.
 
-<img src="images/rf_transmitter.png"><img src="images/rf_receiver.png">
+<img src="images/rf_transmitter.png" height=300><img src="images/rf_receiver.png" height=300>
 
 First of all, let me give credit where credit is due. I used an excellent tutorial [found here](http://www.instructables.com/id/Super-Simple-Raspberry-Pi-433MHz-Home-Automation/) to get started, and I would highly recommend anyone who's considering this to project take a look. I bought an RF transmitter and receiver chip very cheaply from Amazon, and I connected them to GPIO pins on my Raspberry Pi. 
 
