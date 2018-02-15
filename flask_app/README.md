@@ -52,9 +52,11 @@ def light_controls():
 > If everything checks out, the GPIO pins are told to take on the PWM values the user submitted using the [set_PWM_dutycycle()](http://abyz.me.uk/rpi/pigpio/python.html#set_PWM_dutycycle) function.
 ```python
         try:
+            # This first line is making a numpy array containing the user-submitted values for R,G,B
             new_colors = np.array([request.form['red'],request.form['green'],request.form['blue']])
             new_colors = new_colors.astype('int') # make the values all integers
-            assert (np.all(new_colors<256) and np.all(new_colors>=0)) # Are all the values 0-255?
+            # This is just checking that all the values are within the acceptable range
+            assert (np.all(new_colors<256) and np.all(new_colors>=0))
             pi1.set_PWM_dutycycle(red_pin,new_colors[0])  # set new PWM dutycycles
             pi1.set_PWM_dutycycle(green_pin,new_colors[1])
             pi1.set_PWM_dutycycle(blue_pin,new_colors[2])
