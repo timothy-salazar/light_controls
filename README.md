@@ -27,7 +27,7 @@ The obvious choice is to use MOSFETs. Each MOSFET has a gate, source, and drain 
 The LED strip is attached to the 12V power supply, and the red, green, and blue wires - which correspond to the red, green, and blue ground connections - are each attached to the source pin of a MOSFET. Then the GPIO we have designated to control each color is attached to the respective gate pin, and the drain pins are then connected to ground. Now we have the hardware in place to control the flow of current from our power supply, through the LED strips, and down to ground for each color.
 
 ## Controlling GPIO with Raspberry Pi
-I chose to use the [Pigpio library for the Raspberry Pi](http://abyz.me.uk/rpi/pigpio/). This gives us the tools to control whether a pin is on or off, as well as PWM (pulse width modulation), which lets us control the 'amount' of red, green, and blue. It also has the pigpiod daemon, which lets us check that everything is working before we go any further. The daeomon can be started with:
+When I started tinkering with this project in early 2017 I was new to home automation. I can't give enough credit to David Ordnung, who wrote an excellent tutorial [that you can find here](https://dordnung.de/raspberrypi-ledstrip/). Because of this excellent tutorial, I chose to use the [Pigpio library for the Raspberry Pi](http://abyz.me.uk/rpi/pigpio/). This gives us the tools to control whether a pin is on or off, as well as supporting PWM (pulse width modulation) which lets us control the 'amount' of red, green, and blue. It also has the pigpiod daemon, which lets us check that everything is working before we go any further. The daeomon can be started with:
 ```
 sudo pigpiod
 ```
@@ -48,15 +48,26 @@ import pigpio
 
 pi1 = pigpio.pi() # pi1 accesses local GPIO
 pi1.set_mode(26,pigpio.OUTPUT)  # sets this GPIO pin as output. Not necessary, but 
-                                # used in the documentation, seems like best practices
+                                # used in the documentation. Seems like best practices
 pi1.set_PWM_dutycycle(26,255) # set pin 26 to 100% duty cycle
 ```
-Once we have those basics down, the rest is pretty straightforward. [Here's a jupyter notebook with some sample code to play around with](../master/src/sample_pigpio.ipynb)
+Once we have those basics down, the rest is pretty straightforward. [Here's a jupyter notebook with some sample code to play around with](../master/src/sample_pigpio.ipynb),
+
+## RF Outlets
+
+I owned a few RF controlled outlets, and I was interested in seeing if I could control them through my Pi. My roommate had a few neon lights, and being able to turn them on and off through the same interface as the LED strips was an attractive prospect.
+
+<img src="images/rf_transmitter.png"><img src="images/rf_receiver.png">
+
+First of all, let me give credit where credit is due. I used an excellent tutorial [found here](http://www.instructables.com/id/Super-Simple-Raspberry-Pi-433MHz-Home-Automation/) to get started, and I would highly recommend anyone who's considering this to project take a look. I bought an RF transmitter and receiver chip very cheaply from Amazon, and I connected them to GPIO pins on my Raspberry Pi. 
+
 
 ## Making A Flask App
 In the sample repository there was a program that asked the user to enter three values between 0 and 255 for the red, green, and blue color values. In practice this would be time consuming and unintuitive. While I was testing the LEDs I quickly realized how hard it is to guess the proportions required to achieve a particular color! It's also cumbersome to access the Pi's command line whenever you want to change the lights. You can use SSH to access your Pi easily enough, and then pull up the program to change the lights, but it takes time and can easily ruin the mood of a tabletop RPG session.
 
-The solution is to set up a web app - so you can interact with the LEDs through an attractive, intuitive GUI. 
+The solution is to set up a web app - so you can interact with the LEDs through an attractive, intuitive GUI. I have the code for the completed project in [this repository](../master/flask_app), but if you're not sure where to start I've been putting together a step-by-step tutorial [that you can find here](https://github.com/timothy-salazar/light-control-tutorial).
+
+
 
 
 
