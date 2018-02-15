@@ -55,4 +55,4 @@ def transmit_outlet(code):
 
 if __name__ == '__main__':
     for argument in sys.argv[1:]:
-        exec('transmit_code(' + str(argument) + ')')
+        exec('transmit_outlet(' + str(argument) + ')')
