@@ -55,11 +55,15 @@ Once we have those basics down, the rest is pretty straightforward. [Here's a ju
 
 ## RF Outlets
 
-I owned a few RF controlled outlets, and I was interested in seeing if I could control them through my Pi. My roommate had a few neon lights, and being able to turn them on and off through the same interface as the LED strips was an attractive prospect.
+I owned a few RF controlled outlets, and I was interested in seeing if I could control them through my Pi. My roommate had a few neon lights, and being able to turn them on and off through the same interface as the LED strips was an attractive prospect. They came with a remote control that sends a signal on a 433.92MHz frequency. If I wanted to control the outlets using my Pi I would need to record the signal send by the remote, figure out what the signal looks like, and then set up code to transmit the same signal.
 
 <img src="images/rf_transmitter.png" height=300><img src="images/rf_receiver.png" height=300>
 
-First of all, let me give credit where credit is due. I used an excellent tutorial [found here](http://www.instructables.com/id/Super-Simple-Raspberry-Pi-433MHz-Home-Automation/) to get started, and I would highly recommend anyone who's considering this to project take a look. I bought an RF transmitter and receiver chip very cheaply from Amazon, and I connected them to GPIO pins on my Raspberry Pi. 
+First of all, let me give credit where credit is due. I used an excellent tutorial [found here](http://www.instructables.com/id/Super-Simple-Raspberry-Pi-433MHz-Home-Automation/) to get started, and I would highly recommend anyone who's considering this to project take a look. 
+
+I bought an RF transmitter and receiver chip very cheaply from Amazon - about $7.00 for both chips. I connected these to GPIO pins on my Raspberry Pi, and then adapted some code from the tutorial to record the signals from the remote control. The tutorial mentioned above had a brute force approach to figuring out what the signal looks like, involving zooming in on a packet, writing down the long and short impulses, and then measuring the length of the impulses. 
+
+I didn't have luck with the brute force method, so I wrote a very, very simple version of the K-Means algorithm to figure out the duration of each impulse and each pause.  
 
 
 ## Making A Flask App
