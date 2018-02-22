@@ -71,9 +71,7 @@ In the sample repository there was a program that asked the user to enter three 
 
 The solution is to set up a web app - so you can interact with the LEDs through an attractive, intuitive GUI. I have the code for the completed project in [this repository](../master/flask_app), but if you're not sure where to start I've been putting together a step-by-step tutorial [that you can find here](https://github.com/timothy-salazar/light-control-tutorial).
 
-
-
-
+I wouldn't have known where to start without this excellent [flask tutorial](http://flask.pocoo.org/docs/0.12/tutorial/). The sliders were adapted from [w3schools.com](https://www.w3schools.com/howto/howto_js_rangeslider.asp) - which has been an invaluable resource at every step of this project.
 
 
 <p align="center">
@@ -82,10 +80,19 @@ The solution is to set up a web app - so you can interact with the LEDs through 
 
 
 
-
 ## Works Cited
 
+#### [Raspberry Pi & RGB LED-Strips](https://dordnung.de/raspberrypi-ledstrip/), David Ordung
+* David Ordung's tutorial walked me through the first part of this project when I was still a babe in the woods. I knew what I wanted to do, but I wasn't sure how to go about it. David patiently and lucidly explained each step along the way and made the project seem easy and do-able. 
 
+#### [SUPER SIMPLE RASPBERRY PI 433MHZ HOME AUTOMATION](http://www.instructables.com/id/Super-Simple-Raspberry-Pi-433MHz-Home-Automation/), George7378
+* This tutorial explained the hardware I would need and guided me step by step through the process of sniffing the RF code from the remote, getting the code, and then setting up a program to transmit that code. I adapted or changed a lot, but his example code is what got me started, and the rf_sniffer code he provided is basically unchanged - all I did was update it to Python 3.
+
+#### [Flask Documentation](http://flask.pocoo.org/docs/0.12/)
+* Provided the bones for the webpage. I'd never built a webpage before, so I started with the template provided in the Flaskr app and modified it piece by piece as I figured out how everything worked.
+
+#### [w3schools.com](https://www.w3schools.com/)
+* I've never worked with HTML or Javascript before. w3schools.com is an amazing resource that thoroughly covers everything I needed to know.
 
 
 
