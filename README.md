@@ -92,7 +92,7 @@ I wouldn't have known where to start without this excellent [flask tutorial](htt
 * Provided the bones for the webpage. I'd never built a webpage before, so I started with the template provided in the Flaskr app and modified it piece by piece as I figured out how everything worked.
 
 #### [w3schools.com](https://www.w3schools.com/)
-* I've never worked with HTML or Javascript before. w3schools.com is an amazing resource that thoroughly covers everything I needed to know.
+* Before starting this project, I'd never worked with HTML or Javascript before. w3schools.com is an amazing resource that covers everything I needed to know.
 
 
 
