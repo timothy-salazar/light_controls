@@ -1,7 +1,9 @@
+# Adapted from code written by george7378 at instructables.com
+# http://www.instructables.com/id/Super-Simple-Raspberry-Pi-433MHz-Home-Automation/
+
 import time
 import sys
 import RPi.GPIO as GPIO
-
 
 
 def transmit_outlet(code):
